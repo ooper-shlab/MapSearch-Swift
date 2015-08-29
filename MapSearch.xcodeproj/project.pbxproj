@@ -17,8 +17,8 @@
 		D76C36711B907AB300DAFB27 /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C36701B907AB300DAFB27 /* PlaceAnnotation.swift */; settings = {ASSET_TAGS = (); }; };
 		D76C36771B913A1200DAFB27 /* MyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C36761B913A1200DAFB27 /* MyTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D76C36791B913A4F00DAFB27 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C36781B913A4F00DAFB27 /* MapViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		D76C367B1B91494E00DAFB27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C367A1B91494E00DAFB27 /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
 		D76C367F1B914A5800DAFB27 /* README2.md in Sources */ = {isa = PBXBuildFile; fileRef = D76C367E1B914A5800DAFB27 /* README2.md */; settings = {ASSET_TAGS = (); }; };
+		D76C36811B914EA200DAFB27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C36801B914EA200DAFB27 /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
 		E02667CA1B711DE0008DEFA0 /* AssetCatalog.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E02667C91B711DE0008DEFA0 /* AssetCatalog.xcassets */; };
 		E02667CC1B711FB6008DEFA0 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E02667CB1B711FB6008DEFA0 /* Launch.storyboard */; };
 /* End PBXBuildFile section */
@@ -37,8 +37,8 @@
 		D76C36721B907AE100DAFB27 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		D76C36761B913A1200DAFB27 /* MyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyTableViewController.swift; path = Classes/MyTableViewController.swift; sourceTree = "<group>"; };
 		D76C36781B913A4F00DAFB27 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = Classes/MapViewController.swift; sourceTree = "<group>"; };
-		D76C367A1B91494E00DAFB27 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D76C367E1B914A5800DAFB27 /* README2.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README2.md; sourceTree = "<group>"; };
+		D76C36801B914EA200DAFB27 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Classes/AppDelegate.swift; sourceTree = "<group>"; };
 		E02667C91B711DE0008DEFA0 /* AssetCatalog.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AssetCatalog.xcassets; sourceTree = "<group>"; };
 		E02667CB1B711FB6008DEFA0 /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		E02667CD1B715D35008DEFA0 /* ReadMe.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = ReadMe.md; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 		53AF8AEC0D9C50B700726DBA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				D76C367A1B91494E00DAFB27 /* AppDelegate.swift */,
+				D76C36801B914EA200DAFB27 /* AppDelegate.swift */,
 				D76C36781B913A4F00DAFB27 /* MapViewController.swift */,
 				D76C36761B913A1200DAFB27 /* MyTableViewController.swift */,
 				D76C36701B907AB300DAFB27 /* PlaceAnnotation.swift */,
@@ -185,10 +185,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D76C367B1B91494E00DAFB27 /* AppDelegate.swift in Sources */,
 				D76C36791B913A4F00DAFB27 /* MapViewController.swift in Sources */,
 				D76C36771B913A1200DAFB27 /* MyTableViewController.swift in Sources */,
 				D76C36711B907AB300DAFB27 /* PlaceAnnotation.swift in Sources */,
+				D76C36811B914EA200DAFB27 /* AppDelegate.swift in Sources */,
 				D76C367F1B914A5800DAFB27 /* README2.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
