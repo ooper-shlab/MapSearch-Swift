@@ -188,7 +188,7 @@ class MyTableViewController: UITableViewController, CLLocationManagerDelegate, U
         
         // Check if location services are available
         guard CLLocationManager.locationServicesEnabled() else {
-            NSLog("%@: location services are not available.", __FUNCTION__)
+            NSLog("%@: location services are not available.", #function)
             
             // Display alert to the user.
             let alert = UIAlertController(title: "Location services",
@@ -208,7 +208,7 @@ class MyTableViewController: UITableViewController, CLLocationManagerDelegate, U
         if CLLocationManager.authorizationStatus() == .NotDetermined {
             self.locationManager.requestWhenInUseAuthorization()
         } else if CLLocationManager.authorizationStatus() == .Denied {
-            NSLog("%@: location services authorization was previously denied by the user.", __FUNCTION__)
+            NSLog("%@: location services authorization was previously denied by the user.", #function)
             
             // Display alert to the user.
             let alert = UIAlertController(title: "Location services",
