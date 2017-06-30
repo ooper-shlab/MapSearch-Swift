@@ -43,24 +43,24 @@ class MyTableViewController: UITableViewController, CLLocationManagerDelegate, U
         self.locationManager = CLLocationManager()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     
-    override func shouldAutorotate() -> Bool {
+    override var shouldAutorotate : Bool {
         return true
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if UI_USER_INTERFACE_IDIOM() == .Pad {
-            return .All
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        if UI_USER_INTERFACE_IDIOM() == .pad {
+            return .all
         } else {
-            return .AllButUpsideDown
+            return .allButUpsideDown
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let mapViewController = segue.destinationViewController as! MapViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let mapViewController = segue.destination as! MapViewController
         
         if segue.identifier == "showDetail" {
             // Get the single item.
@@ -89,12 +89,12 @@ class MyTableViewController: UITableViewController, CLLocationManagerDelegate, U
     
     //MARK: - UITableView delegate methods
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.places.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier, forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: kCellIdentifier, for: indexPath)
         
         let mapItem = self.places[indexPath.row]
         cell.textLabel!.text = mapItem.name
@@ -105,19 +105,19 @@ class MyTableViewController: UITableViewController, CLLocationManagerDelegate, U
     
     //MARK: - UISearchBarDelegate
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
     
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
     }
     
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(false, animated: true)
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         // If the text changed, reset the tableview if it wasn't empty.
         if self.places.count != 0 {
@@ -127,12 +127,12 @@ class MyTableViewController: UITableViewController, CLLocationManagerDelegate, U
             // Reload the tableview.
             self.tableView.reloadData()
             // Disable the "view all" button.
-            self.viewAllButton.enabled = false
+            self.viewAllButton.isEnabled = false
         }
     }
     
-    private func startSearch(searchString: String?) {
-        if self.localSearch?.searching ?? false {
+    private func startSearch(_ searchString: String?) {
+        if self.localSearch?.isSearching ?? false {
             self.localSearch!.cancel()
         }
         
@@ -156,34 +156,34 @@ class MyTableViewController: UITableViewController, CLLocationManagerDelegate, U
         request.region = newRegion
         
         let completionHandler: MKLocalSearchCompletionHandler = {response, error in
-            if let actualError = error {
+            if let actualError = error as NSError? {
                 let errorStr = actualError.userInfo[NSLocalizedDescriptionKey] as! String
                 let alert = UIAlertController(title: "Could not find places",
                     message: errorStr,
-                    preferredStyle: .Alert)
-                let defaultAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                    preferredStyle: .alert)
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(defaultAction)
-                self.presentViewController(alert, animated: true, completion: nil)
+                self.present(alert, animated: true, completion: nil)
             } else {
                 self.places = response!.mapItems
                 
                 // Used for later when setting the map's region in "prepareForSegue".
                 self.boundingRegion = response!.boundingRegion
                 
-                self.viewAllButton.enabled = !self.places.isEmpty
+                self.viewAllButton.isEnabled = !self.places.isEmpty
                 
                 self.tableView.reloadData()
             }
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
         
         self.localSearch = MKLocalSearch(request: request)
         
-        self.localSearch!.startWithCompletionHandler(completionHandler)
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        self.localSearch!.start(completionHandler: completionHandler)
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         
         // Check if location services are available
@@ -193,32 +193,32 @@ class MyTableViewController: UITableViewController, CLLocationManagerDelegate, U
             // Display alert to the user.
             let alert = UIAlertController(title: "Location services",
                 message: "Location services are not enabled on this device. Please enable location services in settings.",
-                preferredStyle: UIAlertControllerStyle.Alert)
-            let defaultAction = UIAlertAction(title: "Dismiss", style:UIAlertActionStyle.Default,
+                preferredStyle: UIAlertControllerStyle.alert)
+            let defaultAction = UIAlertAction(title: "Dismiss", style:UIAlertActionStyle.default,
                 handler:{action in}) // Do nothing action to dismiss the alert.
             
             alert.addAction(defaultAction)
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
             
             return
         }
         
         // Request "when in use" location service authorization.
         // If authorization has been denied previously, we can display an alert if the user has denied location services previously.
-        if CLLocationManager.authorizationStatus() == .NotDetermined {
+        if CLLocationManager.authorizationStatus() == .notDetermined {
             self.locationManager.requestWhenInUseAuthorization()
-        } else if CLLocationManager.authorizationStatus() == .Denied {
+        } else if CLLocationManager.authorizationStatus() == .denied {
             NSLog("%@: location services authorization was previously denied by the user.", #function)
             
             // Display alert to the user.
             let alert = UIAlertController(title: "Location services",
                 message: "Location services were previously denied by the user. Please enable location services for this app in settings.",
-                preferredStyle: UIAlertControllerStyle.Alert)
-            let defaultAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,
+                preferredStyle: UIAlertControllerStyle.alert)
+            let defaultAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,
                 handler: {action in}) // Do nothing action to dismiss the alert.
             
             alert.addAction(defaultAction)
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
             
             return
         }
@@ -233,7 +233,7 @@ class MyTableViewController: UITableViewController, CLLocationManagerDelegate, U
     
     //MARK: - CLLocationManagerDelegate methods
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         // Remember for later the user's current location.
         let userLocation = locations.last!
@@ -248,7 +248,7 @@ class MyTableViewController: UITableViewController, CLLocationManagerDelegate, U
         self.startSearch(self.searchBar.text)
     }
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         // report any errors returned back from Location Services
     }
     

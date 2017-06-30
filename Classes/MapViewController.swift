@@ -32,7 +32,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         self.mapView?.setRegion(self.boundingRegion, animated: true)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         // We add the placemarks here to get the "drop" animation.
@@ -65,31 +65,31 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.mapView!.removeAnnotations(self.mapView!.annotations)
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad {
-            return UIInterfaceOrientationMask.All
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
+            return UIInterfaceOrientationMask.all
         } else {
-            return UIInterfaceOrientationMask.AllButUpsideDown
+            return UIInterfaceOrientationMask.allButUpsideDown
         }
     }
     
     
     //MARK: - MKMapViewDelegate
     
-    func mapViewDidFailLoadingMap(mapView: MKMapView, withError error: NSError) {
-        NSLog("Failed to load the map: %@", error)
+    func mapViewDidFailLoadingMap(_ mapView: MKMapView, withError error: Error) {
+        NSLog("Failed to load the map: \(error)")
     }
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         var annotationView: MKPinAnnotationView? = nil
         
         if annotation is PlaceAnnotation {
-            annotationView = self.mapView!.dequeueReusableAnnotationViewWithIdentifier("Pin") as! MKPinAnnotationView?
+            annotationView = self.mapView!.dequeueReusableAnnotationView(withIdentifier: "Pin") as! MKPinAnnotationView?
             
             if annotationView == nil {
                 annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "Pin")

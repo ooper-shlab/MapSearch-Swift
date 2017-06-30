@@ -14,10 +14,10 @@
 		530B4D2116446D35003E55F8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530B4D2016446D35003E55F8 /* MapKit.framework */; };
 		5351D66815B60970008C5AB6 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5351D66615B60970008C5AB6 /* MainStoryboard.storyboard */; };
 		539F2C861649AC9100559F41 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 539F2C851649AC9100559F41 /* CoreLocation.framework */; };
-		D76C36711B907AB300DAFB27 /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C36701B907AB300DAFB27 /* PlaceAnnotation.swift */; settings = {ASSET_TAGS = (); }; };
-		D76C36771B913A1200DAFB27 /* MyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C36761B913A1200DAFB27 /* MyTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		D76C36791B913A4F00DAFB27 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C36781B913A4F00DAFB27 /* MapViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		D76C36811B914EA200DAFB27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C36801B914EA200DAFB27 /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		D76C36711B907AB300DAFB27 /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C36701B907AB300DAFB27 /* PlaceAnnotation.swift */; };
+		D76C36771B913A1200DAFB27 /* MyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C36761B913A1200DAFB27 /* MyTableViewController.swift */; };
+		D76C36791B913A4F00DAFB27 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C36781B913A4F00DAFB27 /* MapViewController.swift */; };
+		D76C36811B914EA200DAFB27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C36801B914EA200DAFB27 /* AppDelegate.swift */; };
 		E02667CA1B711DE0008DEFA0 /* AssetCatalog.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E02667C91B711DE0008DEFA0 /* AssetCatalog.xcassets */; };
 		E02667CC1B711FB6008DEFA0 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E02667CB1B711FB6008DEFA0 /* Launch.storyboard */; };
 /* End PBXBuildFile section */
@@ -145,6 +145,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						LastSwiftMigration = 0830;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "MapSearch" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -224,6 +229,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.apple.samplecode.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = MapSearch;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -243,6 +249,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.apple.samplecode.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = MapSearch;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

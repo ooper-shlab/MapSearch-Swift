@@ -20,8 +20,8 @@ class PlaceAnnotation: NSObject, MKAnnotation {
     
     var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D()
     var title: String?
-    var subTitle: String?
-    var url: NSURL?
+    var subtitle: String?
+    var url: URL?
     
     
     
